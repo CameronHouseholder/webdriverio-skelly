@@ -1,0 +1,9 @@
+# allure
+allure-report
+allure-results
+
+# node_modules
+node_modules
+
+# logs
+logs
