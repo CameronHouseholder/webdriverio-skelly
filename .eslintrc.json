@@ -1,0 +1,24 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "jasmine": true
+    },
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "jasmine",
+        "wdio"
+    ],
+    "rules": {
+        "indent": ["error", 4],
+        "class-methods-use-this": "off"
+    },
+    "extends": ["airbnb-base", "plugin:jasmine/recommended", "plugin:wdio/recommended"]
+}

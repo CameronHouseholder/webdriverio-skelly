@@ -1,7 +1,5 @@
-const editorCollections = ['Herbal Tea', 'Loose Tea', 'Flavored Tea'];
-
 class HomeData {
-    get editorCollections() { return editorCollections };
+    get editorCollectionsTeas() { return ['Herbal Tea', 'Loose Tea', 'Flavored Tea']; }
 }
 
 export default new HomeData();
