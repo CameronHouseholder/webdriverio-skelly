@@ -2,7 +2,7 @@
     "env": {
         "es6": true,
         "node": true,
-        "jasmine": true
+        "mocha": true
     },
     "globals": {
         "Atomics": "readonly",
@@ -13,12 +13,11 @@
         "sourceType": "module"
     },
     "plugins": [
-        "jasmine",
         "wdio"
     ],
     "rules": {
         "indent": ["error", 4],
         "class-methods-use-this": "off"
     },
-    "extends": ["airbnb-base", "plugin:jasmine/recommended", "plugin:wdio/recommended"]
+    "extends": ["airbnb-base", "plugin:wdio/recommended"]
 }

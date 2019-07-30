@@ -6,6 +6,10 @@ class OurPassionPage extends Page {
      */
     get pageTitle() { return 'Our Passion'; }
 
+    get ourPassionHeader() { return 'Our Passion'; }
+
+    get theExpertsHeader() { return 'The Experts'; }
+
     /**
      * elements
      */
