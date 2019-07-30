@@ -19,6 +19,10 @@ class NavMenuPage extends Page {
     clickOurPassion() {
         this.clickElem(this.lnkOurPassion);
     }
+
+    lnkOurPassionIsDisplayed() {
+        return this.elemIsDisplayed(this.lnkOurPassion);
+    }
 }
 
 export default new NavMenuPage();

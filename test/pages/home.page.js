@@ -2,6 +2,11 @@ import Page from './page';
 
 class HomePage extends Page {
     /**
+     * page variables
+     */
+    get pageTitle() { return 'Welcome'; }
+
+    /**
      * elements
      */
     get lblHeader() { return $('.txt h1'); }

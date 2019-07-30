@@ -1,10 +1,10 @@
 import Page from './page';
 
 class OurPassionPage extends Page {
-    constructor() {
-        super();
-        this.pageTitle = 'Our Passion';
-    }
+    /**
+     * page variables
+     */
+    get pageTitle() { return 'Our Passion'; }
 
     /**
      * elements

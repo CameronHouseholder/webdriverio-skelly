@@ -54,4 +54,22 @@ export default class Page {
         }
         return elemText;
     }
+
+    /**
+     * Determine if the element is displayed in the DOM and return true or false
+     * @param {object} elem the element to perform the action on
+     * @returns {boolean} true if the element is displayed in the DOM
+     */
+    elemIsDisplayed(elem) {
+        let isDisplayed = false;
+        let reporterMsg = '';
+        try {
+            isDisplayed = elem.isDisplayed();
+        } catch (ex) {
+            // element is not present in the DOM so isDisplayed should remain false
+        }
+        reporterMsg = `${elem.selector} (Is Displayed): ${isDisplayed}`;
+        allureReporter.addStep(reporterMsg, undefined, 'passed');
+        return isDisplayed;
+    }
 }
