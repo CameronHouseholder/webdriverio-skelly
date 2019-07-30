@@ -13,11 +13,11 @@ class NavMenuPage extends Page {
     }
 
     clickWelcome() {
-        this.lnkWelcome.click();
+        this.clickElem(this.lnkWelcome);
     }
 
     clickOurPassion() {
-        this.lnkOurPassion.click();
+        this.clickElem(this.lnkOurPassion);
     }
 }
 

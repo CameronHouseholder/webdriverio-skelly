@@ -9,15 +9,18 @@ class HomePage extends Page {
     get lblEditorCollections() { return $$('.editor_collections'); }
 
     /**
+     * Navigates to the home page
+     */
+    open() {
+        super.open('');
+    }
+
+    /**
      * Wait for the header label to display and return the text
      * @return {string} header label text
      */
     getHeader() {
         return this.getElemText(this.lblHeader);
-    }
-
-    open() {
-        super.open('');
     }
 }
 
