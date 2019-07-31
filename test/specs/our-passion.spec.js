@@ -13,7 +13,7 @@ describe('our passion page tests', () => {
 
     it('should display an our passion link in the side navigation menu', () => {
         allureReporter.addDescription('check that the our passion link is displayed in the side navigation menu');
-        expect(NavMenuPage.lnkOurPassionIsDisplayed).to.equal(true, 'check our passion link is displayed');
+        expect(NavMenuPage.lnkOurPassionIsDisplayed()).to.equal(true, 'check our passion link is displayed');
     });
 
     it('should have the correct page title', () => {
