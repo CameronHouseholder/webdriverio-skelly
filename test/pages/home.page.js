@@ -6,6 +6,10 @@ class HomePage extends Page {
      */
     get pageTitle() { return 'Welcome'; }
 
+    get pageHeader() { return 'We\'re passionate about tea.'; }
+
+    get editorCollections() { return ['Herbal Tea', 'Loose Tea', 'Flavored Tea']; }
+
     /**
      * elements
      */
@@ -26,6 +30,12 @@ class HomePage extends Page {
      */
     getHeader() {
         return this.getElemText(this.lblHeader);
+    }
+
+    getEditorCollections() {
+        const texts = [];
+        this.lblEditorCollections.forEach(elem => texts.push(this.getElemText(elem)));
+        return texts;
     }
 }
 

@@ -60,8 +60,8 @@ exports.config = {
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
         'goog:chromeOptions': {
-            args: ['--start-maximized', '--incognito']
-        }
+            args: ['--start-maximized', '--incognito'],
+        },
     }],
     // chrome options
     // chromeDriverArgs: ['--port=4444', '--url-base=\'/\'', '--start-maximized', '--ignore-certificate-errors', '--incognito', '--disable-gpu', '--headless'],
@@ -121,7 +121,12 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'jasmine',
+    framework: 'mocha',
+    mochaOpts: {
+        ui: 'bdd',
+        timeout: 90000,
+        compilers: ['js:@babel/register'],
+    },
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -130,12 +135,12 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: [
-        'spec', 
+        'spec',
         ['allure', {
             outputDir: './allure-results/',
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: false,
-        }]
+        }],
     ],
     //
     // Options to be passed to Jasmine.
@@ -147,11 +152,11 @@ exports.config = {
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
         // an assertion fails.
-        expectationResultHandler: function(passed, assertion) {
+        expectationResultHandler(passed, assertion) {
             // do something
-        }
+        },
     },
-    
+
     //
     // =====
     // Hooks
@@ -174,7 +179,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    beforeSession: function (config, capabilities, specs) {
+    beforeSession(config, capabilities, specs) {
         require('@babel/register');
     },
     /**
@@ -183,8 +188,11 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    before: function (capabilities, specs) {
-        //require('@babel/register');
+    before(capabilities, specs) {
+        const chai = require('chai');
+        global.expect = chai.expect;
+        global.assert = chai.assert;
+        global.should = chai.should();
     },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -270,6 +278,6 @@ exports.config = {
     * @param {String} oldSessionId session ID of the old session
     * @param {String} newSessionId session ID of the new session
     */
-    //onReload: function(oldSessionId, newSessionId) {
-    //}
-}
+    // onReload: function(oldSessionId, newSessionId) {
+    // }
+};
