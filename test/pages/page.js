@@ -21,6 +21,26 @@ export default class Page {
     }
 
     /**
+     * Get and return the current page url and page title
+     * @returns {object} result - the result containing the current page url and title
+     * @returns {string} result.url - the current page url
+     * @returns {string} result.title - the current page title
+     */
+    getUrlAndTitle() {
+        const result = { url: '', title: '' };
+        let reporterMsg = '';
+        // get url
+        result.url = browser.getUrl();
+        reporterMsg = `page url= (Get Url): ${result.url}`;
+        allureReporter.addStep(reporterMsg, undefined, 'passed');
+        // get title
+        result.title = browser.getTitle();
+        reporterMsg = `page title (Get Title): ${result.title}`;
+        allureReporter.addStep(reporterMsg, undefined, 'passed');
+        return result;
+    }
+
+    /**
      * Waits for the element to be displayed and then clicks the element
      * @param {object} elem the element to perform the action on
      */
@@ -71,5 +91,43 @@ export default class Page {
         reporterMsg = `${elem.selector} (Is Displayed): ${isDisplayed}`;
         allureReporter.addStep(reporterMsg, undefined, 'passed');
         return isDisplayed;
+    }
+
+    /**
+     * Determine if the element is enabled and return true or false
+     * @param {object} elem the element to perform the action on
+     * @returns {boolean} true if the element is enabled
+     */
+    elemIsEnabled(elem) {
+        let isEnabled = false;
+        try {
+            elem.waitForDisplayed(this.defaultTimeout);
+            isEnabled = elem.isEnabled();
+            const reporterMsg = `${elem.selector} (Is Enabled): ${isEnabled}`;
+            allureReporter.addStep(reporterMsg, undefined, 'passed');
+        } catch (ex) {
+            allureReporter.addStep(ex, undefined, 'failed');
+            throw new Error(ex);
+        }
+        return isEnabled;
+    }
+
+    /**
+     * Determine if the element is selected and return true or false
+     * @param {object} elem the element to perform the action on
+     * @returns {boolean} true if the element is selected
+     */
+    elemIsSelected(elem) {
+        let isEnabled = false;
+        try {
+            elem.waitForDisplayed(this.defaultTimeout);
+            isEnabled = elem.isSelected();
+            const reporterMsg = `${elem.selector} (Is Selected): ${isEnabled}`;
+            allureReporter.addStep(reporterMsg, undefined, 'passed');
+        } catch (ex) {
+            allureReporter.addStep(ex, undefined, 'failed');
+            throw new Error(ex);
+        }
+        return isEnabled;
     }
 }

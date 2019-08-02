@@ -4,6 +4,8 @@ class OurPassionPage extends Page {
     /**
      * page variables
      */
+    get pageUrl() { return 'our-passion.html'; }
+
     get pageTitle() { return 'Our Passion'; }
 
     get ourPassionHeader() { return 'Our Passion'; }
@@ -13,31 +15,31 @@ class OurPassionPage extends Page {
     /**
      * elements
      */
-    get lblOurPassion() { return $('.txt h1'); }
+    get lblOurPassionHeader() { return $('.txt h1'); }
 
-    get lblTheExperts() { return $('.txt h2.editor_h1'); }
+    get lblTheExpertsHeader() { return $('.txt h2.editor_h1'); }
 
     /**
      * Navigates to the our passion page
      */
     open() {
-        super.open('our-passion.html');
+        super.open(this.pageUrl);
     }
 
     /**
-     * Wait for the our passion label to display and return the text
-     * @return {string} our passion label text
+     * Wait for the our passion header label to display and return the text
+     * @return {string} our passion header label text
      */
-    getOurPassion() {
-        return this.getElemText(this.lblOurPassion);
+    getOurPassionHeader() {
+        return this.getElemText(this.lblOurPassionHeader);
     }
 
     /**
-     * Wait for the experts label to display and return the text
-     * @return {string} the experts label text
+     * Wait for the experts header label to display and return the text
+     * @return {string} the experts header label text
      */
-    getTheExperts() {
-        return this.getElemText(this.lblTheExperts);
+    getTheExpertsHeader() {
+        return this.getElemText(this.lblTheExpertsHeader);
     }
 }
 

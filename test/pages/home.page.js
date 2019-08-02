@@ -4,6 +4,8 @@ class HomePage extends Page {
     /**
      * page variables
      */
+    get pageUrl() { return 'welcome.html'; }
+
     get pageTitle() { return 'Welcome'; }
 
     get pageHeader() { return 'We\'re passionate about tea.'; }
@@ -13,7 +15,7 @@ class HomePage extends Page {
     /**
      * elements
      */
-    get lblHeader() { return $('.txt h1'); }
+    get lblPageHeader() { return $('.txt h1'); }
 
     get lblEditorCollections() { return $$('.editor_collections'); }
 
@@ -21,15 +23,15 @@ class HomePage extends Page {
      * Navigates to the home page
      */
     open() {
-        super.open('');
+        super.open(this.pageUrl);
     }
 
     /**
-     * Wait for the header label to display and return the text
-     * @return {string} header label text
+     * Wait for the page header label to display and return the text
+     * @return {string} page header label text
      */
-    getHeader() {
-        return this.getElemText(this.lblHeader);
+    getPageHeader() {
+        return this.getElemText(this.lblPageHeader);
     }
 
     getEditorCollections() {
