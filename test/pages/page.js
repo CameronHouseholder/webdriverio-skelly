@@ -57,6 +57,49 @@ export default class Page {
     }
 
     /**
+     * Waits for the element to be displayed and then sets the text of the element
+     * @param {object} elem the element to perform the action on
+     * @param {string} text the text to set in the element
+     */
+    setElemText(elem, text) {
+        try {
+            elem.waitForDisplayed(this.defaultTimeout);
+            elem.sendKeys(text);
+            const reporterMsg = `${elem.selector} (Send Keys): ${text}`;
+            allureReporter.addStep(reporterMsg, undefined, 'passed');
+        } catch (ex) {
+            allureReporter.addStep(ex, undefined, 'failed');
+            throw new Error(ex);
+        }
+    }
+
+    // TODO: Add JS doc comments
+    selectOptionByValue(elem, option) {
+        try {
+            elem.waitForDisplayed(this.defaultTimeout);
+            elem.selectByAttribute('value', option.value);
+            const reporterMsg = `${elem.selector} (Select Option By Value): ${option.value}`;
+            allureReporter.addStep(reporterMsg, undefined, 'passed');
+        } catch (ex) {
+            allureReporter.addStep(ex, undefined, 'failed');
+            throw new Error(ex);
+        }
+    }
+
+    // TODO: Add JS doc comments
+    selectOptionByVisibleText(elem, option) {
+        try {
+            elem.waitForDisplayed(this.defaultTimeout);
+            elem.selectByVisibleText(option.text);
+            const reporterMsg = `${elem.selector} (Select Option By Visible Text): ${option.text}`;
+            allureReporter.addStep(reporterMsg, undefined, 'passed');
+        } catch (ex) {
+            allureReporter.addStep(ex, undefined, 'failed');
+            throw new Error(ex);
+        }
+    }
+
+    /**
      * Waits for the element to be displayed and then returns the element text
      * @param {object} elem the element to perform the action on
      * @returns {string} the element text
