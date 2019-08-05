@@ -35,6 +35,51 @@ class MenuPage extends Page {
     getPageHeader() {
         return this.getElemText(this.lblPageHeader);
     }
+
+    /**
+     * Click the check out green tea button
+     */
+    clickCheckOutGreenTea() {
+        this.clickElem(this.btnCheckOutGreenTea);
+    }
+
+    /**
+     * Determine if the check out green tea button is enabled and return a boolean
+     * @returns {boolean} true if the check out green tea button is enabled
+     */
+    btnCheckOutGreenTeaIsEnabled() {
+        return this.elemIsEnabled(this.btnCheckOutGreenTea);
+    }
+
+    /**
+     * Click the check out red tea button
+     */
+    clickCheckOutRedTea() {
+        this.clickElem(this.btnCheckOutRedTea);
+    }
+
+    /**
+     * Determine if the check out red tea button is enabled and return a boolean
+     * @returns {boolean} true if the check out red tea button is enabled
+     */
+    btnCheckOutRedTeaIsEnabled() {
+        return this.elemIsEnabled(this.btnCheckOutRedTea);
+    }
+
+    /**
+     * Click the check out oolong tea button
+     */
+    clickCheckOutOolongTea() {
+        this.clickElem(this.btnCheckOutOolongTea);
+    }
+
+    /**
+     * Determine if the check out oolong tea button is enabled and return a boolean
+     * @returns {boolean} true if the check out oolong tea button is enabled
+     */
+    btnCheckOutOolongTeaIsEnabled() {
+        return this.elemIsEnabled(this.btnCheckOutOolongTea);
+    }
 }
 
 export default new MenuPage();
