@@ -12,14 +12,9 @@ describe('home page tests', () => {
         allureReporter.addSeverity('critical');
     });
 
-    it('should have the correct page title', () => {
-        allureReporter.addDescription('checks that the page title for the home page is correct');
-        expect(HomePage.getTitle()).to.equal(HomePage.pageTitle, 'check page title');
-    });
-
     it('should have the correct page header', () => {
         allureReporter.addDescription('checks that the page header is correct');
-        expect(HomePage.getHeader()).to.contain(HomePage.pageHeader, 'check page header');
+        expect(HomePage.getPageHeader()).to.contain(HomePage.pageHeader, 'check page header');
     });
 
     it('should have the correct teas listed as editor collections', () => {
